@@ -176,11 +176,11 @@ Here we use this approach to explore structural synaptic plasticity in depth as 
 %-------------------------------------------------------------------------
 \section{Introduction}
 
-The latest achievements in computer science, with massively parallel graphics processing units (GPGPUs) and large-scale neuromorphic hardware implementation such as SpiNNaker \cite{Furber2020}, and in cognitive robotics and neurorobotics, with the widespread use of robots such as iCub, provide the opportunity to significantly advance our understand human cognition and brains and to reach human-level artificial intelligence. 
-November 2018 the world’s largest neuromorphic architecture-1 million \cite{brown2018spinnaker} has switched on courtesy of the University of Manchester.
+The latest achievements in computer science, with massively parallel graphics processing units (GPGPUs) and large-scale neuromorphic hardware implementations such as SpiNNaker \cite{Furber2013}, and in cognitive robotics and neurorobotics, with the widespread use of robots such as iCub, provide the opportunity to significantly advance our understand human cognition and brains and to reach human-level artificial intelligence. 
+In November 2018 the world’s largest neuromorphic architecture by the number of neurons it can simulate -- the 1 million ARM core SpiNNaker machine \cite{Furber2020}-- was switched on courtesy of the University of Manchester.
 The SpiNNaker machine has been designed and built to work in the same way a human brain does.
 The purpose to put the million cores into the machine makes it possible to model a billion biological neurons in real time.
-A billion is till only about 1\% of the scale of the human brain bur more than a whole mouse brain and in practice because we’ve moved rather more complex and detailed biological models.
+A billion is till only about 1\% of the scale of the human brain but more than a whole mouse brain and in practice because we’ve moved rather more complex and detailed biological models.
 However, there is still a wide disparity between the state-of-the-art artificial intelligence and human-level intelligence.
 The missing link must be structural information that is how to represent the structure and the connectivity of the brain.
 The simple integration, on the other hand, is not enough to meet requirements in intelligent service robotics.
@@ -193,7 +193,7 @@ The basic idea of RC architecture is to extend the sparse connectivity property 
 Just as layers in a deep neural network, modular reservoirs have been trained by using the outputs from directly connected reservoirs as input.
 Structural information that is a collection of spatial and temporal representations between entities present in the situation is used to help reduce the search space.
 
-A vital feature of the brain is its ability to learn and memorize something new. Consequently, there are changes not only of synaptic strength between connected neurons but also of the wiring pattern by modifying the connection  in nervous system in the intact adult brain \cite{albieri2015rapid}.
+A vital feature of the brain is its ability to learn and memorize something new. Consequently, there are changes not only of synaptic strength between connected neurons but also of the wiring pattern by modifying the connections  in nervous system in the intact adult brain \cite{albieri2015rapid}.
 A neuronal topographic map represents topological relationships which imply projections from one brain area to another.
 Visual cortex is the core part of the cerebral cortex to process visual information \cite{katzner2009local}.
 \cite{lee1998role} presents data that the primary visual cortex (area V1) seems to be involved in various higher level vision including the computation of cue-invariant boundaries, figure-ground distinction and the medial axis of shape.
@@ -210,7 +210,7 @@ One of meaningful purposes of topographic maps may serve to perform dimension re
 % sparse connection \cite{Bellec2017}
 % sparse coding \cite{olshausen1996emergence} 
 % temporal coding \cite{engel1992temporal} 
-Ganglion cells in mammalian retinas can serve to encode visual information into multiple representations using distinct features \cite{roska2014retina}, likely following a spare coding scheme in which visual information is transformed to encode with a minimum number of active cells \cite{Field1994}.
+Ganglion cells in mammalian retinas can serve to encode visual information into multiple representations using distinct features \cite{roska2014retina}, likely following a sparse coding scheme in which visual information is transformed to encode with a minimum number of active cells \cite{Field1994}.
 There are also inhibitory connections from neighbouring cells in a layer. Their main roles of lateral inhibition are competition between different representations and stabilize the topographic mapping \cite{Kisvarday1994}, \cite{mauss2015neural}.
 % lateral inhibition has a homeostatic eﬀect upon the network.
 % lateral inhibition is the capacity of an excited neuron to reduce the activity of its neighbors. Lateral inhibition disables the spreading of action potentials from excited neurons to neighboring neurons in the lateral direction. This creates a contrast in stimulation that allows increased sensory perception.
@@ -220,7 +220,7 @@ Event-based vision sensors \cite{gray1989oscillatory} and a neuromorphic platfor
 
 Here we use this approach to explore structural synaptic plasticity in depth as a possible mechanism whereby biological vision systems may learn the statistics of their inputs without supervision, pointing the way to engineered vision systems with similar online learning capabilities.
 % , pyDVS \cite{garcia2016pydvs}
-Proposed deep structural plasticity is described using the PyNN \cite{davison2009pynn} which is a simulator-independent common interface for neural network simulation. To perform simulations on the SpiNNaker \cite{Furber2020},  sPyNNaker \cite{rhodes2018spynnaker} has been implemented as a simulator-dependent Python interface.
+Proposed deep structural plasticity is described using the PyNN \cite{davison2009pynn} which is a simulator-independent common interface for neural network simulation. To perform simulations on SpiNNaker,  sPyNNaker \cite{rhodes2018spynnaker} has been implemented as a simulator-dependent Python interface.
 
 %-------------------------------------------------------------------------
 % \section{Retinotopic mapping}
@@ -248,15 +248,15 @@ Additionally, the term will be used to connote the meaning of changes in synapti
 %-------------------------------------------------------------------------
 \section{Event-based neuromorphic systems}
 
-Event-based systems are mostly composed of bio-inspired camera sensors and energy efficient neuromorphic computing systems. 
-While traditional vision sensors capture the entire image at a fix rate, event-based vision sensors (EVSs) measure sufficient change in per-pixel brightness asynchronously \cite{Gallego2019}.
-Vertebrate eyes derive inspiration to EVSs, in particular from the function of photoreceptors which react to changes in illumination.
-By mimicking the structure and processing of the brain, neuromorphic platforms are massively parallel and energy efficient computing system for spiking neural networks.
+Event-based systems are mostly composed of bio-inspired vision sensors and energy efficient neuromorphic computing systems. 
+While traditional vision sensors capture the entire image at a fixed rate, event-based vision sensors (EVSs) measure sufficient change in per-pixel brightness asynchronously \cite{Gallego2019}.
+Vertebrate eyes provide inspiration to EVSs, in particular from the function of photoreceptors which react to changes in illumination.
+By mimicking the structure and processing of the brain, neuromorphic platforms are massively parallel and energy efficient computing systems for spiking neural networks.
 Since action potentials or neuron spikes are inherently asynchronous events, an EVS can be coupled with a neuromorphic platform, because no overhead is required to convert visual events into spikes, and vice versa.
 
 The largest neuromorphic architecture - the 1 million core SpiNNaker machine has switched on courtesy of the University of Manchester \cite{Furber2020}. 
 The SpiNNaker machine has been designed and built to work in the same way a human brain does. 
-The purpose to put the million cores into the machine is to make it possible to model a billion biological neurons in real time. 
+The purpose to put million cores into the machine is to make it possible to model a billion biological neurons in real time. 
 One billion neurons are still only about 1\% of the scale of the human brain but more than a whole mouse brain.
 
 The neuromorphic aspect of SpiNNaker is the way each core is connected to 6 of its neighbouring cores. Biological neural networks display very high degrees of connectivity, with neurons often having many thousands of inputs, sometimes as many as quarter of a million. 
@@ -284,7 +284,7 @@ In line with their implementation, it is extended in depth by adding hidden laye
 The mammalian retina encodes visual information into multiple representations using distinct features \cite{roska2014retina}. The principle of encoding is to represent all the likely inputs with a relatively small number of neurons with minimal loss in decoding of the input \cite{field1994goal}.
 
 In the source layer of our visual encoding model, there are feed-forward connections from the photoreceptors to the receptive fields which have a spatial structure to transmit the input and pass it on to the following layer.
-feed-forward weights are computed according to the photoreceptor array with a two-dimensional Gaussian kernel ($\mathbf{W}_F$) as a convolution which cab be described as the difference between two circularly symmetric
+feed-forward weights are computed according to the photoreceptor array with a two-dimensional Gaussian kernel ($\mathbf{W}_F$) as a convolution which can be described as the difference between two circularly symmetric
 Gaussian functions.
 % a center-surround receptive field or DoG
 Here, the main mechanism for this encoding is competition between different representations through lateral inhibition from neighbours in the following layer.
@@ -323,7 +323,7 @@ r<p_{form}e^{-\frac{\delta^2}{2\sigma^2_{form}}},
 %
 where $r$ is a uniform random number in the interval $[0, 1)$, $p_{form}$ is the peak formation probability, and $\sigma^2_{form}$ is the variance of the connection field, or the spread of the region of preferential connections.
 
-Elimination rules state that if the synapse's conductance is less than half of the maximum allowed conductance, $0.5g_{max}$, it is eliminated with probability $p_{elim\_dep}$, otherwise the probability $p_{elim\_pot}$ is used.
+Elimination rules state that if the synapse's conductance is less than half of the maximum allowed conductance, $0.5g_{max}$, it is eliminated with probability $p_{elim-dep}$, otherwise the probability $p_{elim-pot}$ is used.
 
 If the randomly selected synaptic element exists, the removal rule is followed.
 Removal is either carried out with a fixed probability $p_{elim-pot}$ when weights are static, or with a choice of $p_{elim-pot}$  or $p_{elim-dep}$ when applied in conjunction with STDP. Thus, a synapse is removed if
@@ -332,11 +332,11 @@ Removal is either carried out with a fixed probability $p_{elim-pot}$ when weigh
 r<p_{elim} \text{ where } p_{elim} = 
     \begin{cases}
         p_{elim-dep} & \text{ for }   w_{syn}  < \theta_g \\
-        p_{elim-pott} & \text{ for }   w_{syn}  \geq \theta_g \\
+        p_{elim-pot} & \text{ for }   w_{syn}  \geq \theta_g \\
     \end{cases},
 \end{equation}
 %
-where $r$ is a random number sampled from a uniform distribution in the interval $[0, 1)$, $p_{elim-dep}$ is the elimination probability used when a synapse is depressed, $p_{elim-pot}$ is the elimination probability used when a synapse is potentiated, $w_{syn}$ is the weight of the synapse under consideration for removal and a weight threshold u g is selected as half of the maximum allowed weight ($ \theta_g = g_{max}$). 
+where $r$ is a random number sampled from a uniform distribution in the interval $[0, 1)$, $p_{elim-dep}$ is the elimination probability used when a synapse is depressed, $p_{elim-pot}$ is the elimination probability used when a synapse is potentiated, $w_{syn}$ is the weight of the synapse under consideration for removal and a weight threshold $\theta_g$ is selected as half of the maximum allowed weight ($ \theta_g = g_{max}$). 
 If STDP is not presented in the simulated network, only $p_{elim-pot}$ is used as all synapses would have a fixed weight, namely $g_{max}$.
 
 Neurons within each afferent layer which is directly connected with feed-forward connections also receive lateral connections. These are inhibitory and the main purpose in the network is to limit the spiking activity within the afferent layer. 
@@ -358,6 +358,7 @@ The proposed model is described using the PyNN \cite{davison2009pynn} simulator 
 
 \setlength{\tabcolsep}{4pt}
 \begin{table*}
+\setlength{\tabcolsep}{18pt} % Default value: 6pt
 \begin{center}
 \caption{Font sizes of headings. Table captions should always be
 positioned {\it above} the tables. The final sentence of a table
@@ -369,16 +370,15 @@ caption should end without a full stop}
 \noalign{\smallskip}
 \hline
 \noalign{\smallskip}
-    $N_{layer}=28\times28$ 	& $f_{mean}=5$Hz 	& $v_{rest} = -70$mV 	& $a_{plus} = 0.1$ \\
-    $S_{max}=96 $ 			& $t_{stim}=200$ms 	& $e_{ext} = 0$mV  		& $b = 1.2$	   \\
-    $\sigma_{form-ff}=2.5$		& ~ 				& $v_{thr} = -54$mV 		& $\tau_{plus} = 20$ms \\
-    $\sigma_{form-lat}=2$ 		& ~ 				& $g_{max} = 0.2$Siemens& $\tau_{minus} = 64$ms \\
-    $p_{form-ff}=0.16$ 		& ~  				 & $\tau_{m}=20$ms  		& $w_{min} = 0$*   \\
-    $p_{form-lat}=1$ 			& ~  				& $\tau_{ex}=5$ms 		& $w_{max} = 0.2$*\\
-    $p_{elim-dep}=0.0245$		& ~  				& $\tau_{refract}=5$ms* & ~  \\
-    $p_{elim-pot}=1.36 e -4$ 	& ~  				& $\tau_{inh}=5$ms* 	& ~ \\
-    $f_{rew}=10$ kHz			& ~  				& $v_{reset} = -70$mV* 	& ~ \\
-    $delay = 1$ms*			& ~  				& $cm = 20$nF*			& ~  \\
+    $N_{layer}=28\times28$ 	& $f_{mean}=5$Hz 	& $v_{rest} = -70$mV 	& $A_{+} = 0.1$ \\
+    $S_{max}=96 $ 			& $t_{stim}=200$ms 	& $e_{ext} = 0$mV  		& $B = 1.2$	   \\
+    $\sigma_{form-ff}=5$		& ~ 			& $v_{thr} = -54$mV 		& $\tau_{+} = 20$ms \\
+    $\sigma_{form-lat}=5$ 		& ~ 			& $g_{max} = 0.2$Siemens& $\tau_{-} = 64$ms \\
+    $p_{form-ff}=0.16$ 		    & ~  			& $\tau_{m}=20$ms  		& ~ \\
+    $p_{form-lat}=1$ 			& ~  			& $\tau_{ex}=5$ms 		& ~ \\
+    $p_{elim-dep}=0.0245$		& ~  			& ~                     & ~ \\
+    $p_{elim-pot}=1.36 e -4$ 	& ~  			& ~	                    & ~ \\
+    $f_{rew}=10$ kHz			& ~  			& ~                     & ~ \\
 \hline
 \end{tabular}
 \end{center}
@@ -515,7 +515,7 @@ caption should end without a full stop}
 
 % \subsection{Neural dynamics}
 
-To analyse the quality of topographic map, the measures defined from \cite{bamford2010synaptic}: the spread of the mean receptive field $\sigma_{aff}$ and the Absolute Deviation (AD) of the mean receptive field from its ideal location are used.   
+To analyse the quality of topographic map, the measures defined from \cite{bamford2010synaptic}: the spread of the mean receptive field $\sigma_{aff}$ and the Absolute Deviation ($AD$) of the mean receptive field from its ideal location are used.   
 The former relies on the search for the location around which afferent synapses have the lowest weighted variance $\sigma^2_{aff}$ . 
 This is a move away from the centre of mass measurement used from \cite{Elliott1999} for identifying the preferred location of a receptive field. As a result, the centre of the receptive field that is being examined is the location that minimises the weighted standard deviation, computed as follows:
 %
@@ -526,10 +526,10 @@ This is a move away from the centre of mass measurement used from \cite{Elliott1
 where $i$ loops over synapses, $x$ is a candidate preferred location, $\lvert{\vec{p}_{xi}}\rvert$ is the minimum distance from the location of the afferent for synapse $i$, and $w_i$ is the weight of the synapse.
 The candidate preferred location $x$ has been implemented with an iterative search over each whole number location in each dimension and then a further iteration to locate the preferred location to $1/10$th of a unit of distance. Thus, the preferred location $\vec{x}$ of a receptive field is given by the function: $\arg\min_{\vec{x}}{\sigma^2_{aff}}$.
 
-Once the preferred location of each neuron is computed, taking the mean distance from the ideal location of each preferred location results in a mean AD for the projection. 
-We report both mean AD and mean $\sigma_{aff}$ computed with and without taking into account connections weights. 
-$\sigma_{aff-weight}$ and AD$_{weight}$ are computed using synaptic weights $g_{syn}$, 
-while $\sigma_{aff-conn}$ and AD$_{conn}$ are designed to consider the effect of rewiring on the connectivity, thus synaptic weights are considered unitary.
+Once the preferred location of each neuron is computed, taking the mean distance from the ideal location of each preferred location results in a mean $AD$ for the projection. 
+We report both mean $AD$ and mean $\sigma_{aff}$ computed with and without taking into account connections and  weights. 
+$\sigma_{aff-weight}$ and $AD_{weight}$ are computed using synaptic weights $g_{syn}$, 
+while $\sigma_{aff-conn}$ and $AD_{conn}$ are designed to consider the effect of rewiring on the connectivity, thus synaptic weights are considered unitary.
 
 % \subsection{Neural dynamics}
 
@@ -540,7 +540,7 @@ while $\sigma_{aff-conn}$ and AD$_{conn}$ are designed to consider the effect of
 \section{MNIST experiments}
 
 To verify the proposed networks and explore the characteristics of structural plasticity in depth, the MNIST dataset is used. 
-The MNIST dataset is a large database of $28 X 28$ handwritten digits that is commonly used for training various image processing systems. 
+The MNIST dataset is a large database of $28 \times 28$ handwritten digits that is commonly used for training various image processing systems. 
 These image sequences are converted using a Neuromorphic Vision Sensor emulator (pyDVS) \cite{garcia2016pydvs}.
 the 3 considered cases: STDP in conjunction with synaptic rewiring (Case 1) and synaptic rewiring only without or with lateral connections (Case 2 and 3, respectively).
 
@@ -552,7 +552,7 @@ the 3 considered cases: STDP in conjunction with synaptic rewiring (Case 1) and 
 \end{figure}
 
 Figure \ref{fig:bpWCases} shows the performance of whole simulations for MNIST classification.
-Simulations were performed on the 1 million SpiNNaker \cite{brown2018spinnaker} with three combinational settings for the classification of ten kinds of handwritten digits: three cases (Case 1-3), number of hidden layers (0-3 hidden layers) and four different training \& testing time (300ms, 600ms, 900ms and 1,200ms) for 10 digit classes. The performance is measured from 10 trials of the combinatorial setting, thus total $10 X 10 X 3 X 4 X 4 = 4,800$ each for training and testing. As per Fig. \ref{fig:bpWCases}, the best performance has been achieved in the Case 1 while the Case 3 shows the best average performance.
+Simulations were performed on the 1 million SpiNNaker \cite{brown2018spinnaker} with three combinational settings for the classification of ten kinds of handwritten digits: three cases (Case 1-3), number of hidden layers (0-3 hidden layers) and four different training \& testing time ($300$ms, $600$ms, $900$ms and $1,200$ms) for 10 digit classes. The performance is measured from 10 trials of the combinatorial setting, thus total $10 \times 10 \times 3 \times 4 \times 4 = 4,800$ each for training and testing. As per Fig. \ref{fig:bpWCases}, the best performance has been achieved in the Case 1 while the Case 3 shows the best average performance.
 
 \begin{figure*}[tbh]
     \centering
@@ -586,7 +586,7 @@ Figure \ref{fig:bpTtime} shows the performance over training time for each case.
     \vspace{-10pt}
 \end{figure*}
 
-Figure \ref{fig:evHlayer} shows the evolution of classification performance with respect to the number of hidden layers for each case. Only some results of 1 hidden layer at the Case 3 have outperform the baseline which have been achieved from the previous work \cite{hopkins2018spiking} without hidden layer.
+Figure \ref{fig:evHlayer} shows the evolution of classification performance with respect to the number of hidden layers for each case. Only some results of 1 hidden layer at the Case 3 have outperformed the baseline which have been achieved from the previous work \cite{hopkins2018spiking} without hidden layer.
 
  %-------------------------------------------------------------------------
 % \section{Discussion}
@@ -594,10 +594,10 @@ Figure \ref{fig:evHlayer} shows the evolution of classification performance with
 
 %------------------------------------------------------------------------
 \section{Conclusions}\label{sec:conclusions}
-In this paper, the implementation of structural plasticity on SpiNNaker has been extended in depth.
+In this paper, the implementation of structural plasticity on SpiNNaker has extended network depth to include multiple hidden layers.
 
 There are also several areas for further development and applications.
-Firstly, the idea of feed-forward inhibition which is regarded to is capable of regulating the inhibition/excitation balance and thereby influencing the gain, the integration window, and the temporal precision of inputs \cite{DSouza2016} is considered to learn robust features.
+Firstly, the idea of feed-forward inhibition which is regarded capable of regulating the inhibition/excitation balance and thereby influencing the gain, the integration window, and the temporal precision of inputs \cite{DSouza2016} is considered to learn robust features.
 Beyond handwritten digit recognition, we are considering more general object recognition by combining visual attention \cite{Rea2013}.
 
 %
