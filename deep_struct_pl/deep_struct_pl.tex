@@ -119,13 +119,13 @@
 
 
 
-\addtolength{\abovedisplayskip}{-1.2mm}
+% \addtolength{\abovedisplayskip}{-1.2mm}
 
-\addtolength{\belowdisplayskip}{-1.2mm}
+% \addtolength{\belowdisplayskip}{-1.2mm}
 
-\addtolength{\textfloatsep}{-2mm}
+% \addtolength{\textfloatsep}{-2mm}
 
-\addtolength{\abovecaptionskip}{-1mm}
+% \addtolength{\abovecaptionskip}{-1mm}
 
 %\balance
 
@@ -170,7 +170,9 @@
 % sparse coding.
 % Neuromorphic architecture 1 M SpiNNaker.
 % PyNN, SpyNNaker, pyDVS
-Here we use this approach to explore structural synaptic plasticity in depth as a possible mechanism whereby biological vision systems may learn the statistics of their inputs without supervision, pointing the way to engineered vision systems with similar online learning capabilities.
+Synaptic rewiring occurs throughout a whole life. There is tight interplay between structural changes in the connectivity between neurons and the efficacy of existing connections. This topographical organization allows optimal wiring between neurons, especially sensory connections to the central nervous system.
+Here we use an approach to explore structural synaptic plasticity in depth as a possible mechanism whereby biological vision systems may learn the statistics of their inputs without supervision, pointing the way to engineered vision systems with similar online learning capabilities.
+Moreover, we show the presented model can be used to classify handwritten digits by generating topographic maps between layers of neurons with the small number of connections.
 \end{abstract}
 
 %-------------------------------------------------------------------------
@@ -183,38 +185,17 @@ The purpose to put the million cores into the machine makes it possible to model
 A billion is till only about 1\% of the scale of the human brain but more than a whole mouse brain and in practice because we’ve moved rather more complex and detailed biological models.
 However, there is still a wide disparity between the state-of-the-art artificial intelligence and human-level intelligence.
 The missing link must be structural information that is how to represent the structure and the connectivity of the brain.
-The simple integration, on the other hand, is not enough to meet requirements in intelligent service robotics.
-We cannot rely only on the exponential increase in computing power to produce state of the art performance on a number of robotic tasks such as object/human behavior recognition and skill learning.
+% The simple integration, on the other hand, is not enough to meet requirements in intelligent service robotics.
+% We cannot rely only on the exponential increase in computing power to produce state of the art performance on a number of robotic tasks such as object/human behavior recognition and skill learning.
 
 The structural and algorithmic properties of the neocortex \cite{schmidhuber2015deep} provide an inspiration for computational architectures such as Hierarchical Temporal Memory (HTM) \cite{Hawkins2004} and  Hierarchical Model (HMAX) \cite{Riesenhuber1999}.
 They are computational models of the ventral stream of the visual cortex using a Bayesian belief revision algorithm and neural networks, respectively.
-In reservoir computing (RC) \cite{Lukosevicius2009}, \cite{DeAzambuja2016a}, it has been reported that that the performance in a reservoir with small number of connections is equivalent to that in a reservoir with full connections.
+In reservoir computing (RC) which uses random connections within neural networks to map input signals into higher dimensional computational spaces \cite{Lukosevicius2009}, \cite{DeAzambuja2016a}, it has been reported that that the performance in a reservoir with small number of connections is equivalent to that in a reservoir with full connections.
 The basic idea of RC architecture is to extend the sparse connectivity property in a hierarchical structured manner.
-Just as layers in a deep neural network, modular reservoirs have been trained by using the outputs from directly connected reservoirs as input.
-Structural information that is a collection of spatial and temporal representations between entities present in the situation is used to help reduce the search space.
+% Just as layers in a deep neural network, modular reservoirs have been trained by using the outputs from directly connected reservoirs as input.
+% Structural information that is a collection of spatial and temporal representations between entities present in the situation is used to help reduce the search space.
+Thus, building maps between neural areas with a small number of connections is a key factor to understand the brain functions and structures.
 
-A vital feature of the brain is its ability to learn and memorize something new. Consequently, there are changes not only of synaptic strength between connected neurons but also of the wiring pattern by modifying the connections  in nervous system in the intact adult brain \cite{albieri2015rapid}.
-A neuronal topographic map represents topological relationships which imply projections from one brain area to another.
-Visual cortex is the core part of the cerebral cortex to process visual information \cite{katzner2009local}.
-\cite{lee1998role} presents data that the primary visual cortex (area V1) seems to be involved in various higher level vision including the computation of cue-invariant boundaries, figure-ground distinction and the medial axis of shape.
-% visual cortex \cite{gray1989oscillatory} \cite{katzner2009local} of higher level vision \cite{lee1998role}, \cite{grossberg2003does}
-% topological representations \cite{kosslyn1995topographical}
-% visual features \cite{eckhorn1990feature}
-% cat visual cortex \cite{eckhorn1990feature}
-% 3d vision \cite{grossberg19943}
-% sensory coding \cite{field1994goal}\
-Research during the past several decades on the functional architecture of the retina has found that the image projected onto the retina and captured by the photoreceptors is processed locally by sending a diverse set of parallel, highly processed images \cite{roska2014retina}, \cite{Sanes2015}.
-
-One of meaningful purposes of topographic maps may serve to perform dimension reduction, that they may have arisen through reasons of wiring efficiency \cite{bamford2010synaptic}.
-% deep learning \cite{lecun2015deep} biologically inspired approaches \cite{bellec2019biologically}
-% sparse connection \cite{Bellec2017}
-% sparse coding \cite{olshausen1996emergence} 
-% temporal coding \cite{engel1992temporal} 
-Ganglion cells in mammalian retinas can serve to encode visual information into multiple representations using distinct features \cite{roska2014retina}, likely following a sparse coding scheme in which visual information is transformed to encode with a minimum number of active cells \cite{Field1994}.
-There are also inhibitory connections from neighbouring cells in a layer. Their main roles of lateral inhibition are competition between different representations and stabilize the topographic mapping \cite{Kisvarday1994}, \cite{mauss2015neural}.
-% lateral inhibition has a homeostatic eﬀect upon the network.
-% lateral inhibition is the capacity of an excited neuron to reduce the activity of its neighbors. Lateral inhibition disables the spreading of action potentials from excited neurons to neighboring neurons in the lateral direction. This creates a contrast in stimulation that allows increased sensory perception.
-% mechanism for visual encoding is 
 
 Event-based vision sensors \cite{gray1989oscillatory} and a neuromorphic platform exemplified by the SpiNNaker 1 milion-core neuromorphic system \cite{bogdan2018structural}, \cite{Furber2020} has been used to develop receptive field by synaptic rewiring for topographic mapping involving structural plasticity \cite{hopkins2018spiking}.
 
@@ -238,15 +219,23 @@ Proposed deep structural plasticity is described using the PyNN \cite{davison200
 %% TODO: after lateral inhibition
 % \subsection{Winner takes all networks?}
 
-Alongside weight changes between neural connections, there are findings reporting that learning and memory  could involve alterations to the wiring diagram. %, whereby previously unconnected units become connected and vice versa. 
+
+%-------------------------------------------------------------------------
+\section{Literature Review}
+
+\subsection{Synaptic plasticity}
+
+A vital feature of the brain is its ability to learn and memorize something new. Consequently, there are changes not only of synaptic strength between connected neurons but also of the wiring pattern by modifying the connections  in nervous system in the intact adult brain \cite{albieri2015rapid}.
+A neuronal topographic map represents topological relationships which imply projections from one brain area to another.
+
+Alongside weight changes between neural connections, there are findings reporting that learning and memory  could involve alterations to the wiring diagram.
 Dissimilar to weight changes, cortical rewiring relies on structural plasticity \cite{Chklovskii2004b}.
+Structural plasticity in the form of synaptic rewiring is also a useful computational tool, used to automatically generate connectivity based on experimental activity data \cite{Diaz-Pier2016a}.
 In consideration of development of topographic mappings in both synaptic weight change and synaptic formation and elimination, \cite{bamford2010synaptic} serves as a demonstration of the potential utility of synaptic rewiring as a means of prolonging the retention of learnt patterns.
 From now on in the paper, the terms ''structural plasticity'' is used interchangeably with ''synaptic rewiring''.
 Additionally, the term will be used to connote the meaning of changes in synaptic weights.
 
-
-%-------------------------------------------------------------------------
-\section{Event-based neuromorphic systems}
+\subsection{Event-based neuromorphic systems}
 
 Event-based systems are mostly composed of bio-inspired vision sensors and energy efficient neuromorphic computing systems. 
 While traditional vision sensors capture the entire image at a fixed rate, event-based vision sensors (EVSs) measure sufficient change in per-pixel brightness asynchronously \cite{Gallego2019}.
@@ -262,9 +251,32 @@ One billion neurons are still only about 1\% of the scale of the human brain but
 The neuromorphic aspect of SpiNNaker is the way each core is connected to 6 of its neighbouring cores. Biological neural networks display very high degrees of connectivity, with neurons often having many thousands of inputs, sometimes as many as quarter of a million. 
 Here, SpiNNaker network communications between cores uses small packets which borrows the well-established neuromorphic technique of address event representation (AER \cite{Mahowald1992}), wherein each neuron is given a unique numerical ‘address’ and the only information included in the packets is the source neuron information.
 
+\subsection{Visual encoding}
+
+Visual cortex is the core part of the cerebral cortex to process visual information \cite{katzner2009local}.
+\cite{lee1998role} presents data that the primary visual cortex (area V1) seems to be involved in various higher level vision including the computation of cue-invariant boundaries, figure-ground distinction and the medial axis of shape.
+% visual cortex \cite{gray1989oscillatory} \cite{katzner2009local} of higher level vision \cite{lee1998role}, \cite{grossberg2003does}
+% topological representations \cite{kosslyn1995topographical}
+% visual features \cite{eckhorn1990feature}
+% cat visual cortex \cite{eckhorn1990feature}
+% 3d vision \cite{grossberg19943}
+% sensory coding \cite{field1994goal}\
+Research during the past several decades on the functional architecture of the retina has found that the image projected onto the retina and captured by the photoreceptors is processed locally by sending a diverse set of parallel, highly processed images \cite{roska2014retina}, \cite{Sanes2015}.
+
+One of meaningful purposes of topographic maps may serve to perform dimension reduction, that they may have arisen through reasons of wiring efficiency \cite{bamford2010synaptic}.
+% deep learning \cite{lecun2015deep} biologically inspired approaches \cite{bellec2019biologically}
+% sparse connection \cite{Bellec2017}
+% sparse coding \cite{olshausen1996emergence} 
+% temporal coding \cite{engel1992temporal} 
+Ganglion cells in mammalian retinas can serve to encode visual information into multiple representations using distinct features \cite{roska2014retina}, likely following a sparse coding scheme in which visual information is transformed to encode with a minimum number of active cells \cite{Field1994}.
+There are also inhibitory connections from neighbouring cells in a layer. Their main roles of lateral inhibition are competition between different representations and stabilize the topographic mapping \cite{Kisvarday1994}, \cite{mauss2015neural}.
+% lateral inhibition has a homeostatic eﬀect upon the network.
+% lateral inhibition is the capacity of an excited neuron to reduce the activity of its neighbors. Lateral inhibition disables the spreading of action potentials from excited neurons to neighboring neurons in the lateral direction. This creates a contrast in stimulation that allows increased sensory perception.
 
 %-------------------------------------------------------------------------
-\section{Deep Structural Plasticity}
+\section{Model}
+
+\subsection{Deep Structural Plasticity}
 
 With an event-based vision stream, pre-processing based upon a retinal model, and a suitable neuromorphic platform such as SpiNNaker, we can then proceed to perform additional processing to achieve outcomes such as object recognition and classification. In the following sections, we discuss some of the principles of visual processing in the brain, and some experimental work to develop object classification systems based upon those principles.
 
@@ -280,7 +292,7 @@ In line with their implementation, it is extended in depth by adding hidden laye
     \label{fig:dsp}
 \end{figure}
 
-\subsection{Visual encoding}
+\subsection{Methods}
 The mammalian retina encodes visual information into multiple representations using distinct features \cite{roska2014retina}. The principle of encoding is to represent all the likely inputs with a relatively small number of neurons with minimal loss in decoding of the input \cite{field1994goal}.
 
 In the source layer of our visual encoding model, there are feed-forward connections from the photoreceptors to the receptive fields which have a spatial structure to transmit the input and pass it on to the following layer.
@@ -313,7 +325,7 @@ Additionally, the inhibition of neurons representing similar inputs, and the con
 
 \subsection{Topographic mapping}
 
-\cite{bamford2010synaptic} introduced two probabilistic rules for synaptic rewiring: one for synaptic formation, the other for elimination.
+Bamford et al. \cite{bamford2010synaptic} introduced two probabilistic rules for synaptic rewiring: one for synaptic formation, the other for elimination.
 Rewiring relies on uniform sampling over all potential synapses. 
 Formation is a probabilistic, activity-independent process which randomly selects a pre- and postsynaptic neuron to establish whether a connection between the two exists by taking into account the distance $\delta$ between candidate neurons. A new synapse is formed with maximum weight $g_{max}$ if
 %
@@ -326,7 +338,7 @@ where $r$ is a uniform random number in the interval $[0, 1)$, $p_{form}$ is the
 Elimination rules state that if the synapse's conductance is less than half of the maximum allowed conductance, $0.5g_{max}$, it is eliminated with probability $p_{elim-dep}$, otherwise the probability $p_{elim-pot}$ is used.
 
 If the randomly selected synaptic element exists, the removal rule is followed.
-Removal is either carried out with a fixed probability $p_{elim-pot}$ when weights are static, or with a choice of $p_{elim-pot}$  or $p_{elim-dep}$ when applied in conjunction with STDP. Thus, a synapse is removed if
+Removal is either carried out with a fixed probability $p_{elim-pot}$ when weights are static, or with a choice of $p_{elim-pot}$  or $p_{elim-dep}$ when applied in conjunction with spike-timing dependent plasticity (STDP \cite{Song2000}). Thus, a synapse is removed if
 %
 \begin{equation} \label{eq:elimination_rule}
 r<p_{elim} \text{ where } p_{elim} = 
@@ -360,9 +372,7 @@ The proposed model is described using the PyNN \cite{davison2009pynn} simulator 
 \begin{table*}
 \setlength{\tabcolsep}{18pt} % Default value: 6pt
 \begin{center}
-\caption{Font sizes of headings. Table captions should always be
-positioned {\it above} the tables. The final sentence of a table
-caption should end without a full stop}
+\caption{The parameters used in the simulations}
 \label{tab:sim_params}
 \begin{tabular}{llll}
 \hline\noalign{\smallskip}
@@ -416,27 +426,6 @@ caption should end without a full stop}
 %	
 %\end{table}
 
-%
-%\begin{table}[h]
-%    \centering
-%\begin{tabular}{ |l|l|l|l|l| }
-%    \hline
-%    \textbf{Wiring} & \textbf{Inputs} & \textbf{Membrane} & \textbf{STDP} & \textbf{Simulation}* \\
-%    \hline
-%    $N_{layer}=16\times16$ 		& $f_{mean}=20$Hz 	& $v_{rest} = -70$mV 	& $a_{plus} = 0.1$ & $\delta_t = 1$ms*  \\
-%    $S_{max}=32$ 				& $f_{base}=5$Hz 	& $e_{ext} = 0$mV  		& $b = 1.2$	 & $timescale = 1$*  \\
-%    $\sigma_{form-ff}=2.5$		& $f_{peak}=152.8$Hz& $v_{thr} = -54$mV 	& $\tau_{plus} = 20$ms& ~ \\
-%    $\sigma_{form-lat}=1$ 		& $\sigma_{stim}=2$ & $g_{max} = 0.2$Siemens& $\tau_{minus} = 64$ms& ~ \\
-%    $p_{form-ff}=0.16$ 			& $t_{stim}=20$ms   & $\tau_{m}=20$ms  		& $w_{min} = 0$*  & ~ \\
-%    $p_{form-lat}=1$ 			& ~  				& $\tau_{ex}=5$ms 		& $w_{max} = 0.2$*& ~ \\
-%    $p_{elim-dep}=0.0245$		& ~  				& $\tau_{refract}=5$ms* & ~ & ~ \\
-%    $p_{elim-pot}=1.36 e -4$ 	& ~  				& $\tau_{inh}=5$ms* 	& ~ & ~ \\
-%    $f_{rew}=10$kHz				& ~  				& $v_{reset} = -70$mV* 	& ~ & ~ \\
-%    $delay = 1$ms*				& ~  				& $cm = 20$nF*			& ~ & ~ \\
-%    \hline
-%\end{tabular}
-%\caption{Simulation parameters. Asterisks signify a modified or additional parameter compared to \cite{bamford2010synaptic} \label{tab:sim_params}
-%\end{table}
 
 %\subsection{Computation model}
 
@@ -515,29 +504,30 @@ caption should end without a full stop}
 
 % \subsection{Neural dynamics}
 
-To analyse the quality of topographic map, the measures defined from \cite{bamford2010synaptic}: the spread of the mean receptive field $\sigma_{aff}$ and the Absolute Deviation ($AD$) of the mean receptive field from its ideal location are used.   
-The former relies on the search for the location around which afferent synapses have the lowest weighted variance $\sigma^2_{aff}$ . 
-This is a move away from the centre of mass measurement used from \cite{Elliott1999} for identifying the preferred location of a receptive field. As a result, the centre of the receptive field that is being examined is the location that minimises the weighted standard deviation, computed as follows:
-%
-\begin{equation}
-    \sigma_{aff} = \sqrt{\frac{\sum_i{w_i\lvert{\vec{p}_{xi}}\rvert^2}}{\sum_i{w_i}}}
-\end{equation}
-%
-where $i$ loops over synapses, $x$ is a candidate preferred location, $\lvert{\vec{p}_{xi}}\rvert$ is the minimum distance from the location of the afferent for synapse $i$, and $w_i$ is the weight of the synapse.
-The candidate preferred location $x$ has been implemented with an iterative search over each whole number location in each dimension and then a further iteration to locate the preferred location to $1/10$th of a unit of distance. Thus, the preferred location $\vec{x}$ of a receptive field is given by the function: $\arg\min_{\vec{x}}{\sigma^2_{aff}}$.
+% \subsection{Quality of topographic map}
+% To analyse the quality of topographic map, the measures defined from \cite{bamford2010synaptic}: the spread of the mean receptive field $\sigma_{aff}$ and the Absolute Deviation ($AD$) of the mean receptive field from its ideal location are used.   
+% The former relies on the search for the location around which afferent synapses have the lowest weighted variance $\sigma^2_{aff}$. 
+% This is a move away from the centre of mass measurement used from \cite{Elliott1999} for identifying the preferred location of a receptive field. As a result, the centre of the receptive field that is being examined is the location that minimises the weighted standard deviation, computed as follows:
+% %
+% \begin{equation}
+%     \sigma_{aff} = \sqrt{\frac{\sum_i{w_i\lvert{\vec{p}_{xi}}\rvert^2}}{\sum_i{w_i}}}
+% \end{equation}
+% %
+% where $i$ loops over synapses, $x$ is a candidate preferred location, $\lvert{\vec{p}_{xi}}\rvert$ is the minimum distance from the location of the afferent for synapse $i$, and $w_i$ is the weight of the synapse.
+% The candidate preferred location $x$ has been implemented with an iterative search over each whole number location in each dimension and then a further iteration to locate the preferred location to $1/10$th of a unit of distance. Thus, the preferred location $\vec{x}$ of a receptive field is given by the function: $\arg\min_{\vec{x}}{\sigma^2_{aff}}$.
 
-Once the preferred location of each neuron is computed, taking the mean distance from the ideal location of each preferred location results in a mean $AD$ for the projection. 
-We report both mean $AD$ and mean $\sigma_{aff}$ computed with and without taking into account connections and  weights. 
-$\sigma_{aff-weight}$ and $AD_{weight}$ are computed using synaptic weights $g_{syn}$, 
-while $\sigma_{aff-conn}$ and $AD_{conn}$ are designed to consider the effect of rewiring on the connectivity, thus synaptic weights are considered unitary.
+% Once the preferred location of each neuron is computed, taking the mean distance from the ideal location of each preferred location results in a mean $AD$ for the projection. 
+% We report both mean $AD$ and mean $\sigma_{aff}$ computed with and without taking into account connections and  weights. 
+% $\sigma_{aff-weight}$ and $AD_{weight}$ are computed using synaptic weights $g_{syn}$, 
+% while $\sigma_{aff-conn}$ and $AD_{conn}$ are designed to consider the effect of rewiring on the connectivity, thus synaptic weights are considered unitary.
 
-% \subsection{Neural dynamics}
 
-% \subsection{Visual Layers}
-
+% \subsection{Structural plasticity for classiﬁcation}
+By mimicking retinotopic maps or topographic maps for a retinal model and visual pathways, proposed model can be applicable to achieve outcomes such as object recognition and classification on a suitable neuromorphic platform such as SpiNNaker.
+The following sections present experimental work as an event-based vision system which can classify handwritten digits based on deep structural plasticity.
 
 %-------------------------------------------------------------------------
-\section{MNIST experiments}
+\section{Experiments}
 
 To verify the proposed networks and explore the characteristics of structural plasticity in depth, the MNIST dataset is used. 
 The MNIST dataset is a large database of $28 \times 28$ handwritten digits that is commonly used for training various image processing systems. 
@@ -547,12 +537,59 @@ the 3 considered cases: STDP in conjunction with synaptic rewiring (Case 1) and 
 \begin{figure}[tbh]
     \centering
     \includegraphics[width=0.80\linewidth, trim=0cm 0cm 0cm 0cm, clip=true]{10trials/boxPlotCase}
-    \caption{Whole classification performance with respect to 3 cases}
+    \caption{Classification performance with respect to 3 cases}
     \label{fig:bpWCases}
 \end{figure}
 
 Figure \ref{fig:bpWCases} shows the performance of whole simulations for MNIST classification.
-Simulations were performed on the 1 million SpiNNaker \cite{brown2018spinnaker} with three combinational settings for the classification of ten kinds of handwritten digits: three cases (Case 1-3), number of hidden layers (0-3 hidden layers) and four different training \& testing time ($300$ms, $600$ms, $900$ms and $1,200$ms) for 10 digit classes. The performance is measured from 10 trials of the combinatorial setting, thus total $10 \times 10 \times 3 \times 4 \times 4 = 4,800$ each for training and testing. As per Fig. \ref{fig:bpWCases}, the best performance has been achieved in the Case 1 while the Case 3 shows the best average performance.
+Simulations were performed on the 1 million SpiNNaker \cite{brown2018spinnaker} with three combinational settings for the classification of ten kinds of handwritten digits: three cases (Case 1-3), number of hidden layers (0-3 hidden layers) and four different training \& testing time ($300$ms, $600$ms, $900$ms and $1,200$ms) for 10 digit classes. The performance is measured from 10 trials of the combinatorial setting, thus total $10 \times 10 \times 3 \times 4 \times 4 = 4,800$ each for training and testing. As per Fig. \ref{fig:bpWCases} and Table \ref{tab:sim_stat}, the best performance has been achieved in the Case 1 while the Case 3 shows the best average performance and the smallest variance. 
+
+
+\setlength{\tabcolsep}{4pt}
+\begin{table}
+\setlength{\tabcolsep}{12pt} % Default value: 6pt
+\begin{center}
+\caption{The statistics of MNIST classification}
+\label{tab:sim_stat}
+\begin{tabular}{ llll }
+\hline\noalign{\smallskip}
+     ~          & Case 1    & Case 2    & Case 3    \\ 
+\noalign{\smallskip}
+\hline
+\noalign{\smallskip}    
+    Best 	    & 0.83	    & 0.8 	    & 0.79      \\ %from 84
+    Average 	& 0.56031	& 0.68888 	& 0.72275   \\ %from 56
+    Variance 	& 0.04929	& 0.01116	& 0.00381   \\ %from 72
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\setlength{\tabcolsep}{1.4pt}
+
+
+\setlength{\tabcolsep}{4pt}
+\begin{table}
+\setlength{\tabcolsep}{12pt} % Default value: 6pt
+\begin{center}
+\caption{The best performances on MNIST classification}
+\label{tab:sim_best}
+\begin{tabular}{ llll }
+\hline\noalign{\smallskip}
+     ~          & Case 1    & Case 2    & Case 3    \\ 
+\noalign{\smallskip}
+\hline
+\noalign{\smallskip}    
+    0 hlayer 	& 0.83	    & 0.8	    & 0.79   \\
+    1 hlayers 	& 0.71  	& 0.78   	& 0.78   \\
+    2 hlayers	& 0.64  	& 0.76  	& 0.75   \\
+    3 hlayers 	& 0.43  	& 0.63  	& 0.71   \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+\setlength{\tabcolsep}{1.4pt}
+
+From Table \ref{tab:sim_best}, it is shown that simply added hidden layers does not give a guarantee to improve performance. Any result with hidden layers has not outperformed the baseline which have been achieved from the previous work \cite{hopkins2018spiking} without hidden layer.
 
 \begin{figure*}[tbh]
     \centering
@@ -569,7 +606,22 @@ Simulations were performed on the 1 million SpiNNaker \cite{brown2018spinnaker} 
     \vspace{-10pt}
 \end{figure*}
 
-Figure \ref{fig:bpTtime} shows the performance over training time for each case. While the best averaged and stable results have been produced at the Case 3, the best result was delivered without hidden layer at the Case 1.
+Figure \ref{fig:bpTtime} shows the performance over training time for each case. While the best averaged and stable results have been produced at the Case 3, the best result was delivered without hidden layer at the Case 1. However, simulatneous operation of STDP and rewiring in the presence of correlated input requires more more training time as adding more hidden layers.
+
+\begin{figure*}[tbh]
+    \centering
+    \begin{centering}
+    \begin{tabular}{ccc}
+        \includegraphics[width=0.30\linewidth, trim=0cm 0cm 0cm 0.65cm, clip=true]{10trials/evolMaxC1}&
+        \includegraphics[width=0.30\linewidth, trim=0cm 0cm 0cm 0.65cm, clip=true]{10trials/evolMaxC2}&
+        \includegraphics[width=0.30\linewidth, trim=0cm 0cm 0cm 0.65cm, clip=true]{10trials/evolMaxC3}\\
+        Case 1 & Case 2 & Case 3
+        \end{tabular}
+     \end{centering}
+     \caption{Evolution of the best classification performance}
+     \label{fig:evHlayerBest}
+    \vspace{-10pt}
+\end{figure*}
 
 \begin{figure*}[tbh]
     \centering
@@ -581,23 +633,41 @@ Figure \ref{fig:bpTtime} shows the performance over training time for each case.
         Case 1 & Case 2 & Case 3
         \end{tabular}
      \end{centering}
-     \caption{Evolution of classification performance}
-     \label{fig:evHlayer}
+     \caption{Evolution of the average classification performance}
+     \label{fig:evHlayerAvg}
     \vspace{-10pt}
 \end{figure*}
 
-Figure \ref{fig:evHlayer} shows the evolution of classification performance with respect to the number of hidden layers for each case. Only some results of 1 hidden layer at the Case 3 have outperformed the baseline which have been achieved from the previous work \cite{hopkins2018spiking} without hidden layer.
+Figure \ref{fig:evHlayerBest} and \ref{fig:evHlayerAvg} show the evolution of the best and average classification performance with respect to the cases, respectively. In the case of synaptic rewiring without STDP (Case 3), there is no significant difference in performance regarding the number of hidden layers.
+
+\begin{figure*}[tbh]
+    \centering
+    \begin{centering}
+    \begin{tabular}{ccc}
+        \includegraphics[width=0.30\linewidth, trim=0cm 0cm 0cm 1.5cm, clip=true]{mnist_confusion_matrix_rate_based_case_1_rate_pynn8_3xx_20200131}&
+        \includegraphics[width=0.30\linewidth, trim=0cm 0cm 0cm 1.5cm, clip=true]{mnist_confusion_matrix_rate_based_case_2_rate_pynn8_1dlayers_3x_20200217}&
+        \includegraphics[width=0.30\linewidth, trim=0cm 0cm 0cm 1.5cm, clip=true]{mnist_confusion_matrix_rate_based_case_3_rate_pynn8_1dlayers_2x_20200217}\\
+        Case 1, 0 hlayers & Case 2, 1 hlayers & Case 3, 1 hlayers
+        \end{tabular}
+     \end{centering}
+     \caption{Confusion matrices for classification}
+     \label{fig:confmat}
+    \vspace{-10pt}
+\end{figure*}
+
+Figure \ref{fig:confmat} shows the confusion matrices which are constructed for each of the experimental cases.
+When taken together with the confusion matrices, there are many the misclassification of 1's from most of other classes.
 
  %-------------------------------------------------------------------------
-% \section{Discussion}
-
-
+\section{Discussion}
+% 
 %------------------------------------------------------------------------
-\section{Conclusions}\label{sec:conclusions}
-In this paper, the implementation of structural plasticity on SpiNNaker has extended network depth to include multiple hidden layers.
+% \section{Conclusions}\label{sec:conclusions}
+In this paper, the implementation of structural plasticity on SpiNNaker has extended network depth to include multiple hidden layers. The proposed model has been applied for handwritten digit classification. 
 
 There are also several areas for further development and applications.
-Firstly, the idea of feed-forward inhibition which is regarded capable of regulating the inhibition/excitation balance and thereby influencing the gain, the integration window, and the temporal precision of inputs \cite{DSouza2016} is considered to learn robust features.
+Firstly, we have a plan to regulate network connectivity and activation  such as homeostatic plasticity \cite{Tien2018} which keeps balance of the activity level of networks because then number of connections between layers and action firing rates go down according to the depth. 
+Secondly, the idea of feed-forward inhibition which is regarded capable of regulating the inhibition/excitation balance and thereby influencing the gain, the integration window, and the temporal precision of inputs \cite{DSouza2016} is considered to learn robust features.
 Beyond handwritten digit recognition, we are considering more general object recognition by combining visual attention \cite{Rea2013}.
 
 %
