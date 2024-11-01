@@ -1,22 +1,9 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
+\documentclass{bmvc2k}
 
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
-%\documentclass[journal,12pt,onecolumn,draftclsnofoot,]{IEEEtran} 
+%% Enter your paper number here for the review copy
+\bmvcreviewcopy{853}
 
-%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
 
-\IEEEoverridecommandlockouts                              % This command is only needed if 
-                                                          % you want to use the \thanks command
-
-%\overrideIEEEmargins                                      % Needed to meet printer requirements.
-
-% See the \addtolength command later in the file to balance the column lengths
-% on the last page of the document
-
-% The following packages can be found on http:\\www.ctan.org
-%\usepackage{graphics} % for pdf, bitmapped graphics files
-%\usepackage{epsfig} % for postscript graphics files
 \usepackage{mathptmx} % assumes new font selection scheme installed
 \usepackage{times} % assumes new font selection scheme installed
 \usepackage{amsmath} % assumes amsmath package installed
@@ -112,7 +99,7 @@
 
 % Packages hyperref and algorithmic misbehave sometimes.  We can fix
 % this with the following command.
-\newcommand{\theHalgorithm}{\arabic{algorithm}}
+%%\newcommand{\theHalgorithm}{\arabic{algorithm}}
 
 \usepackage{amsmath}
  \DeclareMathOperator*{\argmax}{arg\,max}
@@ -147,26 +134,46 @@
 
 
 \title{Exploring Deep Structural Plasticity for Visual Recognition on Neuromorphic Architecture}
-% \title{Spatio-temporal Representation Learning by Deep Structural Plasticity for Visual Recognition on Neuromorphic architecture}
-%\title{Contribution Title\thanks{Supported by organization x.}}
 
-\author{Gi Hyun Lim$^{1,2}$, Petrut A. Bogdan$^{1}$, Oliver Rhodes$^{1}$, Andrew G. D. Rowley$^{1}$, \\ 
-         Steve B. Furber$^{1}$ and Angelo Cangelosi$^{1}$% <-this % stops a space
-%\thanks{*This work was not supported by any organization}% <-this % stops a space
-\thanks{$^{1}$The authors are with Department of Computer Science, University of Manchester, Manchester, UK
-{\tt\small \{gihyun.lim, petrut.bogdan, oliver.rhodes, Andrew.Rowley, steve.furber, angelo.cangelosi\}@manchester.ac.uk}.
+% Enter the paper's authors in order
+% \addauthor{Name}{email/homepage}{INSTITUTION_CODE}
+\addauthor{Gi Hyun Lim}{ghlim71@wku.ac.kr}{1,2}
+\addauthor{Petrut A. Bogdan}{petrut.bogdan@manchester.ac.uk}{2}
+\addauthor{Oliver Rhodes}{oliver.rhodes@manchester.ac.uk}{2}
+\addauthor{Andrew G. D. Rowley}{Andrew.Rowley@manchester.ac.uk}{2}
+\addauthor{Steve B. Furber}{steve.furber@manchester.ac.uk}{2}
+\addauthor{Angelo Cangelosi}{angelo.cangelosi@manchester.ac.uk}{2}
 
-$^{2}$The author is with Department of Artificial Intelligence Convergence, Wonkwang University, Iksan, Korea.}}
+% Enter the institutions
+% \addinstitution{Name\\Address}
+\addinstitution{
+ Department of Artificial Intelligence Convergence,\\
+ Wonkwang University,\\ 
+ Iksan, Korea
+}
+\addinstitution{
+ Department of Computer Science,\\ 
+ University of Manchester,\\ 
+ Manchester, UK
+}
 
+\runninghead{Lim et al.}{Deep structural plasticity}
 
+% Any macro definitions you would like to include
+% These are not defined in the style file, because they don't begin
+% with \bmva, so they might conflict with the user's own macros.
+% The \bmvaOneDot macro adds a full stop unless there is one in the
+% text already.
+\def\eg{\emph{e.g}\bmvaOneDot}
+\def\Eg{\emph{E.g}\bmvaOneDot}
+\def\etal{\emph{et al}\bmvaOneDot}
+
+%-------------------------------------------------------------------------
+% Document starts here
 \begin{document}
 
 \maketitle
-%\thispagestyle{empty}
-%\pagestyle{empty}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
 % Structural plasticity.
 % Dynamic vision sensor cameras or Event-based vision sensors
@@ -181,11 +188,12 @@ This work extends previous work done using a structural synaptic plasticity mech
 The system may learn the statistics of the inputs in an online fashion without supervision, pointing the way to engineered vision systems with similar online learning capabilities.
 Moreover, we show the presented model can be used to classify handwritten digits by generating topographic maps between layers of neurons with small number of connections.
 %The proposed approaches provides valuable insights to increase the performance of a neural circuit by increasing its scale in a structured manner.
-The proposed approach provides valuable insights to understand the phenomena of a neural circuit by increasing its scale in a structured manner.
+The proposed approaches provides valuable insights to understand the phenomena of a neural circuit by increasing its scale in a structured manner.
 
 %\todo[inline]{I've tried to re-word the abstract a bit. I bit more work could go into it to clearly outline the contribution of the paper.}
 \end{abstract}
 
+%-------------------------------------------------------------------------
 %-------------------------------------------------------------------------
 \section{Introduction}
 
@@ -317,7 +325,7 @@ In line with their implementation, it is extended in depth by adding hidden laye
 
 \begin{figure}[tbh]
     \centering
-    \includegraphics[width=0.90\linewidth, trim=0cm 0cm 0cm 0cm, clip=true]{DSP_n}
+    \includegraphics[width=0.70\linewidth, trim=0cm 0cm 0cm 0cm, clip=true]{DSP_n}
     \caption{Deep structural plasticity for topographic mapping}
     \label{fig:dsp}
 \end{figure}
@@ -413,34 +421,35 @@ $p_{elim-dep}$ and $p_{elim-pot}$ were set at much lower than mean formation rat
 
 The proposed model is described using the PyNN \cite{davison2009pynn} simulator independent network description language. 
 The SpiNNaker, simulator-dependent, implementation of PyNN (sPyNNaker \cite{rhodes2018spynnaker}) has been extended to perform synaptic rewiring. 
-Table \ref{tab:sim_params} contains the parameters used in the simulations.
+The same parameters in \cite{bogdan2018structural} have been used in the simulations.
+%Table \ref{tab:sim_params} contains the parameters used in the simulations.
 
-\setlength{\tabcolsep}{4pt}
-\begin{table*}
-\setlength{\tabcolsep}{18pt} % Default value: 6pt
-\begin{center}
-\caption{The parameters used in the simulations}
-\label{tab:sim_params}
-\begin{tabular}{llll}
-\hline\noalign{\smallskip}
-    wiring & inputs & membrane & STDP \\
-\noalign{\smallskip}
-\hline
-\noalign{\smallskip}
-    $N_{layer}=28\times28$ 	& $f_{mean}=5$Hz 	& $v_{rest} = -70$mV 	& $A_{+} = 0.1$ \\
-    $S_{max}=96 $ 			& $t_{stim}=200$ms 	& $e_{ext} = 0$mV  		& $B = 1.2$	   \\
-    $\sigma_{form-ff}=5$		& ~ 			& $v_{thr} = -54$mV 		& $\tau_{+} = 20$ms \\
-    $\sigma_{form-lat}=5$ 		& ~ 			& $g_{max} = 0.2$Siemens& $\tau_{-} = 64$ms \\
-    $p_{form-ff}=0.16$ 		    & ~  			& $\tau_{m}=20$ms  		& ~ \\
-    $p_{form-lat}=1$ 			& ~  			& $\tau_{ex}=5$ms 		& ~ \\
-    $p_{elim-dep}=0.0245$		& ~  			& ~                     & ~ \\
-    $p_{elim-pot}=1.36 e -4$ 	& ~  			& ~	                    & ~ \\
-    $f_{rew}=10$ kHz			& ~  			& ~                     & ~ \\
-\hline
-\end{tabular}
-\end{center}
-\end{table*}
-\setlength{\tabcolsep}{1.4pt}
+%\setlength{\tabcolsep}{4pt}
+%\begin{table*}
+%\setlength{\tabcolsep}{18pt} % Default value: 6pt
+%\begin{center}
+%\caption{The parameters used in the simulations}
+%\label{tab:sim_params}
+%\begin{tabular}{llll}
+%\hline\noalign{\smallskip}
+%    wiring & inputs & membrane & STDP \\
+%\noalign{\smallskip}
+%\hline
+%\noalign{\smallskip}
+%    $N_{layer}=28\times28$ 	& $f_{mean}=5$Hz 	& $v_{rest} = -70$mV 	& $A_{+} = 0.1$ \\
+%    $S_{max}=96 $ 			& $t_{stim}=200$ms 	& $e_{ext} = 0$mV  		& $B = 1.2$	   \\
+%    $\sigma_{form-ff}=5$		& ~ 			& $v_{thr} = -54$mV 		& $\tau_{+} = 20$ms \\
+%    $\sigma_{form-lat}=5$ 		& ~ 			& $g_{max} = 0.2$Siemens& $\tau_{-} = 64$ms \\
+%    $p_{form-ff}=0.16$ 		    & ~  			& $\tau_{m}=20$ms  		& ~ \\
+%    $p_{form-lat}=1$ 			& ~  			& $\tau_{ex}=5$ms 		& ~ \\
+%    $p_{elim-dep}=0.0245$		& ~  			& ~                     & ~ \\
+%    $p_{elim-pot}=1.36 e -4$ 	& ~  			& ~	                    & ~ \\
+%    $f_{rew}=10$ kHz			& ~  			& ~                     & ~ \\
+%\hline
+%\end{tabular}
+%\end{center}
+%\end{table*}
+%\setlength{\tabcolsep}{1.4pt}
 
 %\begin{table}
 %    \centering
@@ -585,7 +594,7 @@ the 3 considered cases: STDP in conjunction with synaptic rewiring (Case 1) and 
 
 \begin{figure}[tbh]
     \centering
-    \includegraphics[width=0.80\linewidth, trim=0cm 0cm 0cm 0cm, clip=true]{10trials/boxPlotCase}
+    \includegraphics[width=0.70\linewidth, trim=0cm 0cm 0cm 0cm, clip=true]{10trials/boxPlotCase}
     \caption{Classification performance with respect to 3 cases}
     \label{fig:bpWCases}
 \end{figure}
@@ -743,17 +752,6 @@ There are also several areas for further development and applications.
 Firstly, we have a plan to regulate network connectivity and activation  such as homeostatic plasticity \cite{Tien2018} which keeps balance of the activity level of networks because then number of connections between layers and action firing rates go down with increased depth. 
 Secondly, the idea of feed-forward inhibition which is regarded capable of regulating the inhibition/excitation balance and thereby influencing the gain, the integration window, and the temporal precision of inputs \cite{DSouza2016} is considered to learn robust features. 
 Beyond handwritten digit recognition, we are considering more general object recognition by combining visual attention \cite{Rea2013}.
-%
-%\section*{ACKNOWLEDGMENT}
-%
-%This work was supported by the EuRoC Project under Grant no. 608849 and by National Funds through the FCT - Foundation for Science and Technology, in the context of the project UID/CEC/00127/2013.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
-
-\bibliographystyle{IEEEtran}
-\bibliography{strona} % sigproc.bib is the name of the Bibliography in this case
-
+\bibliography{strona}
 \end{document}

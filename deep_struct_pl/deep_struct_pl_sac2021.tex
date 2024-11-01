@@ -1,172 +1,108 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
+\documentclass[sigconf]{acmart}
 
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
-%\documentclass[journal,12pt,onecolumn,draftclsnofoot,]{IEEEtran} 
+\usepackage{booktabs} % For formal tables
 
-%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
 
-\IEEEoverridecommandlockouts                              % This command is only needed if 
-                                                          % you want to use the \thanks command
+% Copyright
+%\setcopyright{none}
+\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+%\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
 
-%\overrideIEEEmargins                                      % Needed to meet printer requirements.
 
-% See the \addtolength command later in the file to balance the column lengths
-% on the last page of the document
+% DOI
+\acmDOI{xx.xxx/xxx_x}
 
-% The following packages can be found on http:\\www.ctan.org
-%\usepackage{graphics} % for pdf, bitmapped graphics files
-%\usepackage{epsfig} % for postscript graphics files
-\usepackage{mathptmx} % assumes new font selection scheme installed
-\usepackage{times} % assumes new font selection scheme installed
-\usepackage{amsmath} % assumes amsmath package installed
-\usepackage{amssymb}  % assumes amsmath package installed
+% ISBN
+\acmISBN{978-1-4503-8104-8/21/03}
 
-\usepackage{array}
+%Conference
+\acmConference[SAC'21]{ACM SAC Conference}{March 22-March 26, 2021}{Gwangju, South Korea}
+\acmYear{2021}
+\copyrightyear{2021}
 
-\usepackage{soul} % vahid: for cross out
 
-\usepackage[T1]{fontenc}
-\usepackage{color}
-\usepackage{enumerate}
-%\usepackage{caption}
-\definecolor{red}{rgb}{1.00,0.00,0.00}
-\definecolor{blue}{rgb}{0.00,0.00,1.00}
-\definecolor{green}{rgb}{0.4,1.00,0.0}
-\definecolor{yellow}{rgb}{0.5,0.5,0.0}
-\newcommand{\cred}[1] {\textcolor{red}{#1}}
-\newcommand{\cblue}[1] {\textcolor{blue}{#1}}
-\newcommand{\cgreen}[1] {\textcolor{green}{#1}}
-\newcommand{\cyellow}[1] {\textcolor{yellow}{#1}}
+\acmArticle{4}
+\acmPrice{15.00}
 
-\usepackage{float}
-%\usepackage{dblfloatfix}
+% These commands are optional
+%\acmBooktitle{Transactions of the ACM Woodstock conference}
+%\editor{Jennifer B. Sartor}
+%\editor{Theo D'Hondt}
+%\editor{Wolfgang De Meuter}
+
 \usepackage{graphicx} % for pdf, bitmapped graphics files
  \graphicspath{{./figures/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
  \DeclareGraphicsExtensions{.pdf,.jpg,.png}
 
-\usepackage{xcolor}
-\usepackage[export]{adjustbox}
-
-%\usepackage{mwe,tikz}\usepackage[percent]{overpic}
-
-%\usepackage[ruled,vlined]{algorithm2e}
-%\usepackage{algorithmic,algorithm2e,float}
-%\usepackage{algorithmicx}
-%\usepackage[vlined]{algorithm2e}
-\usepackage{listings}
-
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{setspace}
-
-% useful packages for now
-\usepackage{todonotes}
-
-\algtext*{EndIf}% Remove "end if" text
-\algtext*{EndWhile}% Remove "end while" text
-\algtext*{EndFor}% Remove "end for" text
-\algtext*{EndProcedure}% Remove "end procedure" text
-
-% begin vertical rule patch for algorithmicx (http://tex.stackexchange.com/questions/144840/vertical-loop-block-lines-in-algorithmicx-with-noend-option)
-\makeatletter
-% start with some helper code
-% This is the vertical rule that is inserted
-\newcommand*{\algrule}[1][\algorithmicindent]{\makebox[#1][l]{\hspace*{.5em}\vrule height .75\baselineskip depth .25\baselineskip}}% 
-\newcount\ALG@printindent@tempcnta
-\def\ALG@printindent{%
-    \ifnum \theALG@nested>0% is there anything to print
-        \ifx\ALG@text\ALG@x@notext% is this an end group without any text?
-            % do nothing
-            \addvspace{-3pt}% FUDGE for cases where no text is shown, to make the rules line up
-        \else
-            \unskip
-            % draw a rule for each indent level
-            \ALG@printindent@tempcnta=1
-            \loop
-                \algrule[\csname ALG@ind@\the\ALG@printindent@tempcnta\endcsname]%
-                \advance \ALG@printindent@tempcnta 1
-            \ifnum \ALG@printindent@tempcnta<\numexpr\theALG@nested+1\relax% can't do <=, so add one to RHS and use < instead
-            \repeat
-        \fi
-    \fi
-    }%
-\usepackage{etoolbox}
-% the following line injects our new indent handling code in place of the default spacing
-\patchcmd{\ALG@doentity}{\noindent\hskip\ALG@tlm}{\ALG@printindent}{}{\errmessage{failed to patch}}
-\makeatother
-% end vertical rule patch for algorithmicx
-
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-
-\newtheorem{definition}{Definition}
-
-% As of 2011, we use the hyperref package to produce hyperlinks in the
-% resulting PDF.  If this breaks your system, please commend out the
-% following usepackage line and replace \usepackage{icml2015} with
-% \usepackage[nohyperref]{icml2015} above.
-\usepackage{hyperref}
-
-% Packages hyperref and algorithmic misbehave sometimes.  We can fix
-% this with the following command.
-\newcommand{\theHalgorithm}{\arabic{algorithm}}
-
-\usepackage{amsmath}
- \DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
-
-\usepackage{tabularx}
-
-
-
-% \addtolength{\abovedisplayskip}{-1.2mm}
-
-% \addtolength{\belowdisplayskip}{-1.2mm}
-
-% \addtolength{\textfloatsep}{-2mm}
-
-% \addtolength{\abovecaptionskip}{-1mm}
-
-%\balance
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-% my hyphenation rules
-
-%\hyphenation{http://lars.mec.ua.pt/public/Media/mriem/ipm}
-\hyphenation{se-ve-ral do-ne}
-
-\usepackage{acronym}
-%\acrodef{label}[short]{\textit{long form}}
-%\renewcommand*\acsfont{\textit}
-\renewcommand*{\acffont}[1]{\textit{#1}}
-\renewcommand*{\acfsfont}[1]{\textnormal{#1}}
-
-
-\title{Exploring Deep Structural Plasticity for Visual Recognition on Neuromorphic Architecture}
-% \title{Spatio-temporal Representation Learning by Deep Structural Plasticity for Visual Recognition on Neuromorphic architecture}
-%\title{Contribution Title\thanks{Supported by organization x.}}
-
-\author{Gi Hyun Lim$^{1,2}$, Petrut A. Bogdan$^{1}$, Oliver Rhodes$^{1}$, Andrew G. D. Rowley$^{1}$, \\ 
-         Steve B. Furber$^{1}$ and Angelo Cangelosi$^{1}$% <-this % stops a space
-%\thanks{*This work was not supported by any organization}% <-this % stops a space
-\thanks{$^{1}$The authors are with Department of Computer Science, University of Manchester, Manchester, UK
-{\tt\small \{gihyun.lim, petrut.bogdan, oliver.rhodes, Andrew.Rowley, steve.furber, angelo.cangelosi\}@manchester.ac.uk}.
-
-$^{2}$The author is with Department of Artificial Intelligence Convergence, Wonkwang University, Iksan, Korea.}}
-
 
 \begin{document}
+\title{Exploring Deep Structural Plasticity for Visual Recognition on Neuromorphic Architecture}
+%\titlenote{Produces the permission block, and
+%  copyright information}
+%\subtitle{Extended Abstract}
+%\subtitlenote{The full version of the author's guide is available as
+%  \texttt{acmart.pdf} document}
 
-\maketitle
-%\thispagestyle{empty}
-%\pagestyle{empty}
+
+\author{Gi Hyun Lim, Petrut A. Bogdan, Oliver Rhodes, Andrew G. D. Rowley, \\
+         Steve B. Furber and Angelo Cangelosi}
+% \authornote{Dr.~Trovato insisted his name be first.}
+% \orcid{1234-5678-9012}
+\affiliation{%
+  \institution{Department of Computer Science, University of Manchester}
+  \streetaddress{Oxford Rd.}
+  \city{Manchester} 
+  % \state{Ohio} 
+   \country{UK}
+  \postcode{M13 9PL}
+}
+% \email{trovato@corporation.com}
+% \author{Ben Trovato}
+% \authornote{Dr.~Trovato insisted his name be first.}
+% \orcid{1234-5678-9012}
+% \affiliation{%
+%   \institution{Institute for Clarity in Documentation}
+%   \streetaddress{P.O. Box 1212}
+%   \city{Dublin} 
+%   \state{Ohio} 
+%   \postcode{43017-6221}
+% }
+% \email{trovato@corporation.com}
+
+% \author{G.K.M. Tobin}
+% \authornote{The secretary disavows any knowledge of this author's actions.}
+% \affiliation{%
+%   \institution{Institute for Clarity in Documentation}
+%   \streetaddress{P.O. Box 1212}
+%   \city{Dublin} 
+%   \state{Ohio} 
+%   \postcode{43017-6221}
+% }
+% \email{webmaster@marysville-ohio.com}
+
+% \author{Lars Th{\o}rv{\"a}ld}
+% \authornote{This author is the
+%   one who did all the really hard work.}
+% \affiliation{%
+%   \institution{The Th{\o}rv{\"a}ld Group}
+%   \streetaddress{1 Th{\o}rv{\"a}ld Circle}
+%   \city{Hekla} 
+%   \country{Iceland}}
+% \email{larst@affiliation.org}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The default list of authors is too long for headers}
+\renewcommand{\shorttitle}{Exploring Deep Structural Plasticity on Neuromorphic  Architecture}
+\renewcommand{\shortauthors}{G.H. Lim et al.}
+
+
 \begin{abstract}
 % Structural plasticity.
 % Dynamic vision sensor cameras or Event-based vision sensors
@@ -181,10 +117,34 @@ This work extends previous work done using a structural synaptic plasticity mech
 The system may learn the statistics of the inputs in an online fashion without supervision, pointing the way to engineered vision systems with similar online learning capabilities.
 Moreover, we show the presented model can be used to classify handwritten digits by generating topographic maps between layers of neurons with small number of connections.
 %The proposed approaches provides valuable insights to increase the performance of a neural circuit by increasing its scale in a structured manner.
-The proposed approach provides valuable insights to understand the phenomena of a neural circuit by increasing its scale in a structured manner.
+The proposed approaches provides valuable insights to understand the phenomena of a neural circuit by increasing its scale in a structured manner.
 
 %\todo[inline]{I've tried to re-word the abstract a bit. I bit more work could go into it to clearly outline the contribution of the paper.}
 \end{abstract}
+
+%
+% The code below should be generated by the tool at
+% http://dl.acm.org/ccs.cfm
+% Please copy and paste the code instead of the example below. 
+%
+\begin{CCSXML}
+<ccs2012>
+   <concept>
+       <concept_id>10010147.10010257.10010293.10011809</concept_id>
+       <concept_desc>Computing methodologies~Bio-inspired approaches</concept_desc>
+       <concept_significance>500</concept_significance>
+       </concept>
+ </ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Computing methodologies~Bio-inspired approaches}
+
+
+\keywords{Deep neural networks, structural plasticity, neuromorphic computing platform, visual recognition, topographic map}
+
+
+\maketitle
+
 
 %-------------------------------------------------------------------------
 \section{Introduction}
@@ -346,8 +306,7 @@ By computing weights in this manner, neighbours will be inhibited proportionally
 In each layer ($i$), their computed weights ($\mathbf{W}_L^i$) for lateral inhibitory connections can be considered negative, which means that the total computation ($\mathit{f}_G^i$) of the circuit can act as a centre-surround filter:
 %
 \begin{equation}
-%    \mathit{f}_G^i  \varpropto \mathit{f}^i_{F}(\mathbf{W}^i_{F}) - \mathbf{W}_{L}^i .
-    \mathit{f}_G^i  \propto \mathit{f}^i_{F}(\mathbf{W}^i_{F}) - \mathbf{W}_{L}^i .
+    \mathit{f}_G^i  \varpropto \mathit{f}^i_{F}(\mathbf{W}^i_{F}) - \mathbf{W}_{L}^i .
 \end{equation}
 %
 The computation continues up to the target layer through hidden layers.
@@ -378,15 +337,12 @@ If the randomly selected synaptic element exists, the removal rule is followed.
 Removal is either carried out with a fixed probability $p_{elim-pot}$ when weights are static, or with a choice of $p_{elim-pot}$  or $p_{elim-dep}$ when applied in conjunction with spike-timing dependent plasticity (STDP \cite{Song2000}). 
 Thus, a synapse is removed if
 %
-    %TODO:: something....
 \begin{equation} \label{eq:elimination_rule}
-\begin{aligned}
-r<p_{elim}, \text{where }  p_{elim} = 
+r<p_{elim} \text{ where } p_{elim} = 
     \begin{cases}
-        p_{elim-dep} \text{ for }   w_{syn}  < \theta_g \\
-        p_{elim-pot} \text{ for }   w_{syn}  \geq \theta_g \\
+        p_{elim-dep} & \text{ for }   w_{syn}  < \theta_g \\
+        p_{elim-pot} & \text{ for }   w_{syn}  \geq \theta_g \\
     \end{cases},
-\end{aligned}
 \end{equation}
 %
 where $r$ is a random number sampled from a uniform distribution in the interval $[0, 1)$, $p_{elim-dep}$ is the elimination probability used when a synapse is depressed, $p_{elim-pot}$ is the elimination probability used when a synapse is potentiated, $w_{syn}$ is the weight of the synapse under consideration for removal and a weight threshold $\theta_g$ is selected as half of the maximum allowed weight ($ \theta_g = g_{max}$). 
@@ -594,7 +550,6 @@ Figure \ref{fig:bpWCases} shows the performance of all the simulations for MNIST
 Simulations were performed on the 1 million SpiNNaker \cite{brown2018spinnaker} with three combinational settings for the classification of ten kinds of handwritten digits: three cases (Case 1-3), number of hidden layers (0-3 hidden layers) and four different training \& testing time ($300$s, $600$s, $900$s and $1,200$s) for 10 digit classes. 
 The performance is measured from 10 trials of the combinatorial setting, thus total $10 \times 10 \times 3 \times 4 \times 4 = 4,800$ simulations each for training and testing. 
 As per Fig. \ref{fig:bpWCases} and Table \ref{tab:sim_stat}, the best performance has been achieved in the Case 1 while the Case 3 shows the best average performance and the smallest variance. 
-
 \setlength{\tabcolsep}{4pt}
 \begin{table}
 \setlength{\tabcolsep}{12pt} % Default value: 6pt
@@ -616,10 +571,6 @@ As per Fig. \ref{fig:bpWCases} and Table \ref{tab:sim_stat}, the best performanc
 \end{table}
 \setlength{\tabcolsep}{1.4pt}
 
-%-------------------------------------------------------------------------
-\section{Discussion}
-% 
-%------------------------------------------------------------------------
 
 \setlength{\tabcolsep}{4pt}
 \begin{table}
@@ -644,6 +595,7 @@ As per Fig. \ref{fig:bpWCases} and Table \ref{tab:sim_stat}, the best performanc
 \setlength{\tabcolsep}{1.4pt}
 
 Table \ref{tab:sim_best} shows that simply adding hidden layers does not improve performance. Any result with hidden layers has not outperformed the baseline which have been achieved from the previous work \cite{hopkins2018spiking} without a hidden layer.
+One of reasons might be that the firing rate goes down with each subsequent layer.
 %\todo[inline]{It would be interesting to figure out why this is the case? Is the firing rate going down with each subsequent layer, thus preventing accurate classification? Are the hidden layers learning anything new from the previous layer?}
 
 \begin{figure*}[tbh]
@@ -715,27 +667,11 @@ In the case of synaptic rewiring without STDP (Case 3), there is no significant 
 Figure \ref{fig:confmat} shows the confusion matrices which are constructed for each of the experimental cases.
 When taken together with the confusion matrices, there are many misclassification of 1's from most of other classes.
 
-
-One of reasons for bad performance might be that the firing rate goes down with each subsequent layer. While the firing rate of inputs is 5Hz, average firing rates of trained outputs are less than 5, as shown in Fig. \ref{fig:fr_bp_c3}. A way to keep firing rates between layers while neurons forming and removing connections needs to consider enforcing some level of  homeostasis by maintaining a target firing rate.
-
-\begin{figure}[tbh]
-    \centering
-    \includegraphics[width=0.80\linewidth, trim=0cm 0cm 0cm 0cm, clip=true]{mnist_training_firing_rate_boxplot_case_3_rate_pynn8}
-    \caption{An example of trained firing rate for Case 3}
-    \label{fig:fr_bp_c3}
-\end{figure}
-
-Additionally, excitatory feedforward connections to the next layer might play a role as Gaussian filters. They are widely used  to reduce image noise and reduce detail or make the result of blurring an image \cite{nixon2019feature}. Thus, the more hidden layers, the worse performances have been achieved even with lateral inhibitory connections.
-Here, inhibitory feedforward connections can induce the effect of difference of Gaussians (DoG) with excitatory feedforward connections. DoG is a widely used effect in graphics software, typically for feature enhancement by increasing the visibility of edges and other detail. Moreover, Since Dog have also been used for scale-invariant feature detection \cite{lowe2004distinctive, bay2006surf}, it will provide opportunities to change scales between layers. 
-
-
-%%-------------------------------------------------------------------------
-%\section{Discussion}
-%% 
-%%------------------------------------------------------------------------
-
-\section{Conclusions}\label{sec:conclusions}
-
+ %-------------------------------------------------------------------------
+\section{Discussion}
+% 
+%------------------------------------------------------------------------
+% \section{Conclusions}\label{sec:conclusions}
 In this paper, the implementation of structural plasticity on SpiNNaker has extended network depth to include multiple hidden layers. 
 The proposed model has been applied for handwritten digit classification. 
 
@@ -743,6 +679,7 @@ There are also several areas for further development and applications.
 Firstly, we have a plan to regulate network connectivity and activation  such as homeostatic plasticity \cite{Tien2018} which keeps balance of the activity level of networks because then number of connections between layers and action firing rates go down with increased depth. 
 Secondly, the idea of feed-forward inhibition which is regarded capable of regulating the inhibition/excitation balance and thereby influencing the gain, the integration window, and the temporal precision of inputs \cite{DSouza2016} is considered to learn robust features. 
 Beyond handwritten digit recognition, we are considering more general object recognition by combining visual attention \cite{Rea2013}.
+
 %
 %\section*{ACKNOWLEDGMENT}
 %
@@ -753,7 +690,8 @@ Beyond handwritten digit recognition, we are considering more general object rec
 
 %%References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
 
-\bibliographystyle{IEEEtran}
+
+\bibliographystyle{ACM-Reference-Format}
 \bibliography{strona} % sigproc.bib is the name of the Bibliography in this case
 
 \end{document}

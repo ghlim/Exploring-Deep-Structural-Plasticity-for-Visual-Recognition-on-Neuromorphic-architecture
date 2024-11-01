@@ -1,172 +1,97 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %2345678901234567890123456789012345678901234567890123456789012345678901234567890
-%        1         2         3         4         5         6         7         8
+%%%%%%%% ICML 2021 EXAMPLE LATEX SUBMISSION FILE %%%%%%%%%%%%%%%%%
 
-\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
-%\documentclass[journal,12pt,onecolumn,draftclsnofoot,]{IEEEtran} 
+\documentclass{article}
 
-%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
-
-\IEEEoverridecommandlockouts                              % This command is only needed if 
-                                                          % you want to use the \thanks command
-
-%\overrideIEEEmargins                                      % Needed to meet printer requirements.
-
-% See the \addtolength command later in the file to balance the column lengths
-% on the last page of the document
-
-% The following packages can be found on http:\\www.ctan.org
-%\usepackage{graphics} % for pdf, bitmapped graphics files
-%\usepackage{epsfig} % for postscript graphics files
-\usepackage{mathptmx} % assumes new font selection scheme installed
-\usepackage{times} % assumes new font selection scheme installed
-\usepackage{amsmath} % assumes amsmath package installed
-\usepackage{amssymb}  % assumes amsmath package installed
-
-\usepackage{array}
-
-\usepackage{soul} % vahid: for cross out
-
-\usepackage[T1]{fontenc}
-\usepackage{color}
-\usepackage{enumerate}
-%\usepackage{caption}
-\definecolor{red}{rgb}{1.00,0.00,0.00}
-\definecolor{blue}{rgb}{0.00,0.00,1.00}
-\definecolor{green}{rgb}{0.4,1.00,0.0}
-\definecolor{yellow}{rgb}{0.5,0.5,0.0}
-\newcommand{\cred}[1] {\textcolor{red}{#1}}
-\newcommand{\cblue}[1] {\textcolor{blue}{#1}}
-\newcommand{\cgreen}[1] {\textcolor{green}{#1}}
-\newcommand{\cyellow}[1] {\textcolor{yellow}{#1}}
-
-\usepackage{float}
-%\usepackage{dblfloatfix}
+% Recommended, but optional, packages for figures and better typesetting:
+\usepackage{microtype}
 \usepackage{graphicx} % for pdf, bitmapped graphics files
  \graphicspath{{./figures/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
  \DeclareGraphicsExtensions{.pdf,.jpg,.png}
 
-\usepackage{xcolor}
-\usepackage[export]{adjustbox}
+\usepackage{subfigure}
+\usepackage{booktabs} % for professional tables
 
-%\usepackage{mwe,tikz}\usepackage[percent]{overpic}
-
-%\usepackage[ruled,vlined]{algorithm2e}
-%\usepackage{algorithmic,algorithm2e,float}
-%\usepackage{algorithmicx}
-%\usepackage[vlined]{algorithm2e}
-\usepackage{listings}
-
-\usepackage{algorithm}
-\usepackage{algpseudocode}
-\usepackage{setspace}
-
-% useful packages for now
-\usepackage{todonotes}
-
-\algtext*{EndIf}% Remove "end if" text
-\algtext*{EndWhile}% Remove "end while" text
-\algtext*{EndFor}% Remove "end for" text
-\algtext*{EndProcedure}% Remove "end procedure" text
-
-% begin vertical rule patch for algorithmicx (http://tex.stackexchange.com/questions/144840/vertical-loop-block-lines-in-algorithmicx-with-noend-option)
-\makeatletter
-% start with some helper code
-% This is the vertical rule that is inserted
-\newcommand*{\algrule}[1][\algorithmicindent]{\makebox[#1][l]{\hspace*{.5em}\vrule height .75\baselineskip depth .25\baselineskip}}% 
-\newcount\ALG@printindent@tempcnta
-\def\ALG@printindent{%
-    \ifnum \theALG@nested>0% is there anything to print
-        \ifx\ALG@text\ALG@x@notext% is this an end group without any text?
-            % do nothing
-            \addvspace{-3pt}% FUDGE for cases where no text is shown, to make the rules line up
-        \else
-            \unskip
-            % draw a rule for each indent level
-            \ALG@printindent@tempcnta=1
-            \loop
-                \algrule[\csname ALG@ind@\the\ALG@printindent@tempcnta\endcsname]%
-                \advance \ALG@printindent@tempcnta 1
-            \ifnum \ALG@printindent@tempcnta<\numexpr\theALG@nested+1\relax% can't do <=, so add one to RHS and use < instead
-            \repeat
-        \fi
-    \fi
-    }%
-\usepackage{etoolbox}
-% the following line injects our new indent handling code in place of the default spacing
-\patchcmd{\ALG@doentity}{\noindent\hskip\ALG@tlm}{\ALG@printindent}{}{\errmessage{failed to patch}}
-\makeatother
-% end vertical rule patch for algorithmicx
-
-\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-\renewcommand{\algorithmicensure}{\textbf{Output:}}
-
-\newtheorem{definition}{Definition}
-
-% As of 2011, we use the hyperref package to produce hyperlinks in the
-% resulting PDF.  If this breaks your system, please commend out the
-% following usepackage line and replace \usepackage{icml2015} with
-% \usepackage[nohyperref]{icml2015} above.
+% hyperref makes hyperlinks in the resulting PDF.
+% If your build breaks (sometimes temporarily if a hyperlink spans a page)
+% please comment out the following usepackage line and replace
+% \usepackage{icml2021} with \usepackage[nohyperref]{icml2021} above.
 \usepackage{hyperref}
 
-% Packages hyperref and algorithmic misbehave sometimes.  We can fix
-% this with the following command.
+% Attempt to make hyperref and algorithmic work together better:
 \newcommand{\theHalgorithm}{\arabic{algorithm}}
 
 \usepackage{amsmath}
- \DeclareMathOperator*{\argmax}{arg\,max}
-\DeclareMathOperator*{\argmin}{arg\,min}
 
-\usepackage{tabularx}
+% Use the following line for the initial blind version submitted for review:
+\usepackage{icml2021}
 
+% If accepted, instead use the following line for the camera-ready submission:
+%\usepackage[accepted]{icml2021}
 
-
-% \addtolength{\abovedisplayskip}{-1.2mm}
-
-% \addtolength{\belowdisplayskip}{-1.2mm}
-
-% \addtolength{\textfloatsep}{-2mm}
-
-% \addtolength{\abovecaptionskip}{-1mm}
-
-%\balance
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-
-% my hyphenation rules
-
-%\hyphenation{http://lars.mec.ua.pt/public/Media/mriem/ipm}
-\hyphenation{se-ve-ral do-ne}
-
-\usepackage{acronym}
-%\acrodef{label}[short]{\textit{long form}}
-%\renewcommand*\acsfont{\textit}
-\renewcommand*{\acffont}[1]{\textit{#1}}
-\renewcommand*{\acfsfont}[1]{\textnormal{#1}}
-
-
-\title{Exploring Deep Structural Plasticity for Visual Recognition on Neuromorphic Architecture}
-% \title{Spatio-temporal Representation Learning by Deep Structural Plasticity for Visual Recognition on Neuromorphic architecture}
-%\title{Contribution Title\thanks{Supported by organization x.}}
-
-\author{Gi Hyun Lim$^{1,2}$, Petrut A. Bogdan$^{1}$, Oliver Rhodes$^{1}$, Andrew G. D. Rowley$^{1}$, \\ 
-         Steve B. Furber$^{1}$ and Angelo Cangelosi$^{1}$% <-this % stops a space
-%\thanks{*This work was not supported by any organization}% <-this % stops a space
-\thanks{$^{1}$The authors are with Department of Computer Science, University of Manchester, Manchester, UK
-{\tt\small \{gihyun.lim, petrut.bogdan, oliver.rhodes, Andrew.Rowley, steve.furber, angelo.cangelosi\}@manchester.ac.uk}.
-
-$^{2}$The author is with Department of Artificial Intelligence Convergence, Wonkwang University, Iksan, Korea.}}
-
+    % The \icmltitle you define below is probably too long as a header.
+% Therefore, a short form for the running title is supplied here:
+\icmltitlerunning{Exploring Deep Structural Plasticity for Visual Recognition on Neuromorphic Architecture}
 
 \begin{document}
 
-\maketitle
-%\thispagestyle{empty}
-%\pagestyle{empty}
+\twocolumn[
+\icmltitle{Exploring Deep Structural Plasticity for \\
+           Visual Recognition on Neuromorphic Architecture}
 
+% It is OKAY to include author information, even for blind
+% submissions: the style file will automatically remove it for you
+% unless you've provided the [accepted] option to the icml2021
+% package.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List of affiliations: The first argument should be a (short)
+% identifier you will use later to specify author affiliations
+% Academic affiliations should list Department, University, City, Region, Country
+% Industry affiliations should list Company, City, Region, Country
+
+% You can specify symbols, otherwise they are numbered in order.
+% Ideally, you should not use this facility. Affiliations will be numbered
+% in order of appearance and this is the preferred way.
+% \icmlsetsymbol{equal}{*}
+
+\begin{icmlauthorlist}
+% \icmlauthor{Aeiau Zzzz}{equal,to}
+\icmlauthor{Gi Hyun Lim}{uom}
+\icmlauthor{Petrut A. Bogdan}{uom}
+\icmlauthor{Oliver Rhodes}{uom}
+\icmlauthor{Andrew G. D. Rowley}{uom}
+\icmlauthor{Steve B. Furber}{uom}
+\icmlauthor{Angelo Cangelosi}{uom}
+\end{icmlauthorlist}
+
+% \icmlaffiliation{to}{Department of Computation, University of Torontoland, Torontoland, Canada}
+\icmlaffiliation{uom}{Department of Computer Science, University of Manchester, Manchester, United Kingdom}
+
+\icmlcorrespondingauthor{Gi Hyun Lim}{hhmetal@gmail.com, gihyunlim@manchester.ac.uk}
+\icmlcorrespondingauthor{Angelo Cangelosi}{angelo,cangelosi@manchester.ac.uk}
+%\icmlcorrespondingauthor{Eee Pppp}{ep@eden.co.uk}
+
+% You may provide any keywords that you
+% find helpful for describing your paper; these are used to populate
+% the "keywords" metadata in the PDF but will not be shown in the document
+% \icmlkeywords{Machine Learning, ICML}
+\icmlkeywords{Structural plasticity, neuromorphic architecture}
+
+\vskip 0.3in
+]
+
+% this must go after the closing bracket ] following \twocolumn[ ...
+
+% This command actually creates the footnote in the first column
+% listing the affiliations and the copyright notice.
+% The command takes one argument, which is text to display at the start of the footnote.
+% The \icmlEqualContribution command is standard text for equal contribution.
+% Remove it (just {}) if you do not need this facility.
+
+%\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
+\printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
+
 \begin{abstract}
 % Structural plasticity.
 % Dynamic vision sensor cameras or Event-based vision sensors
@@ -181,7 +106,7 @@ This work extends previous work done using a structural synaptic plasticity mech
 The system may learn the statistics of the inputs in an online fashion without supervision, pointing the way to engineered vision systems with similar online learning capabilities.
 Moreover, we show the presented model can be used to classify handwritten digits by generating topographic maps between layers of neurons with small number of connections.
 %The proposed approaches provides valuable insights to increase the performance of a neural circuit by increasing its scale in a structured manner.
-The proposed approach provides valuable insights to understand the phenomena of a neural circuit by increasing its scale in a structured manner.
+The proposed approaches provides valuable insights to understand the phenomena of a neural circuit by increasing its scale in a structured manner.
 
 %\todo[inline]{I've tried to re-word the abstract a bit. I bit more work could go into it to clearly outline the contribution of the paper.}
 \end{abstract}
@@ -743,17 +668,66 @@ There are also several areas for further development and applications.
 Firstly, we have a plan to regulate network connectivity and activation  such as homeostatic plasticity \cite{Tien2018} which keeps balance of the activity level of networks because then number of connections between layers and action firing rates go down with increased depth. 
 Secondly, the idea of feed-forward inhibition which is regarded capable of regulating the inhibition/excitation balance and thereby influencing the gain, the integration window, and the temporal precision of inputs \cite{DSouza2016} is considered to learn robust features. 
 Beyond handwritten digit recognition, we are considering more general object recognition by combining visual attention \cite{Rea2013}.
+
+% Acknowledgements should only appear in the accepted version.
+%\section*{Acknowledgements}
 %
-%\section*{ACKNOWLEDGMENT}
+%\textbf{Do not} include acknowledgements in the initial version of
+%the paper submitted for blind review.
 %
-%This work was supported by the EuRoC Project under Grant no. 608849 and by National Funds through the FCT - Foundation for Science and Technology, in the context of the project UID/CEC/00127/2013.
+%If a paper is accepted, the final camera-ready version can (and
+%probably should) include acknowledgements. In this case, please
+%place such acknowledgements in an unnumbered section at the
+%end of the paper. Typically, this will include thanks to reviewers
+%who gave useful comments, to colleagues who contributed to the ideas,
+%and to funding agencies and corporate sponsors that provided financial
+%support.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% In the unusual situation where you want a paper to appear in the
+% references without citing it in the main text, use \nocite
+\nocite{langley00}
 
-%%References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
+\bibliography{strona}
+\bibliographystyle{icml2021}
 
-\bibliographystyle{IEEEtran}
-\bibliography{strona} % sigproc.bib is the name of the Bibliography in this case
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DELETE THIS PART. DO NOT PLACE CONTENT AFTER THE REFERENCES!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\appendix
+%\section{Do \emph{not} have an appendix here}
+%
+%\textbf{\emph{Do not put content after the references.}}
+%%
+%Put anything that you might normally include after the references in a separate
+%supplementary file.
+%
+%We recommend that you build supplementary material in a separate document.
+%If you must create one PDF and cut it up, please be careful to use a tool that
+%doesn't alter the margins, and that doesn't aggressively rewrite the PDF file.
+%pdftk usually works fine. 
+%
+%\textbf{Please do not use Apple's preview to cut off supplementary material.} In
+%previous years it has altered margins, and created headaches at the camera-ready
+%stage. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \end{document}
+
+
+% This document was modified from the file originally made available by
+% Pat Langley and Andrea Danyluk for ICML-2K. This version was created
+% by Iain Murray in 2018, and modified by Alexandre Bouchard in
+% 2019 and 2021. Previous contributors include Dan Roy, Lise Getoor and Tobias
+% Scheffer, which was slightly modified from the 2010 version by
+% Thorsten Joachims & Johannes Fuernkranz, slightly modified from the
+% 2009 version by Kiri Wagstaff and Sam Roweis's 2008 version, which is
+% slightly modified from Prasad Tadepalli's 2007 version which is a
+% lightly changed version of the previous year's version by Andrew
+% Moore, which was in turn edited from those of Kristian Kersting and
+% Codrina Lauth. Alex Smola contributed to the algorithmic style files.
